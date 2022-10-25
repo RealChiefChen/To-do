@@ -19,7 +19,7 @@ notify2.init("")
 
 while True:
     RED2=open(f"/home/{USE}/reminder.txt", "r").read()
-    NOT=notify2.Notification("G.a.R.I", f"Remember to: {RED2}", "/home/chiefchen/Documents/discord-pngs/gun.png")
+    NOT=notify2.Notification("G.a.R.I", f"Remember to: {RED2}", "/home/{USE}/GaRI.png")
     NOT.show()
     RED=open(f"/home/{USE}/reminder.txt", "r")
     WORD=RED.read().replace(" ", "_")
