@@ -18,10 +18,10 @@ USE=os.getlogin()
 notify2.init("")
 
 while True:
-    RED2=open(f"/home/{USE}/reminder.txt", "r").read()
-    NOT=notify2.Notification("G.a.R.I", f"Remember to: {RED2}", "/home/{USE}/GaRI.png")
+    RED2=open(f"/home/{USE}/To-do-main/reminder.txt", "r").read()
+    NOT=notify2.Notification("G.a.R.I", f"Remember to: {RED2}", "/home/{USE}/To-do-main/GaRI.png")
     NOT.show()
-    RED=open(f"/home/{USE}/reminder.txt", "r")
+    RED=open(f"/home/{USE}/To-do-main/reminder.txt", "r")
     WORD=RED.read().replace(" ", "_")
     os.system(f"espeak-ng Remember_to_{WORD}.")
     RED.close
