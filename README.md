@@ -21,7 +21,7 @@ chmod +x todo
 
 MacOS
 ```
-I am not currently supporting MacOS. However, it may still run, I haven't tested it
+I am not currently supporting MacOS. However, it may still run, It hasn't been tested
 ```
 
 Windows
