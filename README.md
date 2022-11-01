@@ -7,6 +7,7 @@ PLEASE NOTE! THIS PROGRAM IS NOT DONE AND IS STILL BEING WORKED ON. Feel free to
 you also might need to install espeak-ng https://github.com/espeak-ng/espeak-ng
 
 make sure to run "pip install notify2" if notify2 is not installed
+If pip is not installed. Your on your own I ain't holding your hand through that
 
 Instalation
 ==================
