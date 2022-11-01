@@ -9,7 +9,7 @@ you also might need to install espeak-ng https://github.com/espeak-ng/espeak-ng
 
 make sure to run "pip install notify2" if notify2 is not installed
 
-#Instalation
+Instalation
 ==================
 
 Linux
