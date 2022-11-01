@@ -1,0 +1,53 @@
+#!/bin/python3
+
+#G.a.R.I
+#Grade.
+#a.
+#Robot.
+#Intenigence.
+
+#this imports stuff duh
+import sys
+import os
+import notify2
+import time
+from configparser import ConfigParser
+
+#just makes variables for later
+LOOP=True
+USE=os.getcwd()
+OP=sys.argv
+CON=ConfigParser()
+notify2.init("")
+CON.read(f"{USE}/config.ini")
+SET=int(CON["freq"]["minutes"])
+
+#makes sure that any given options are valid
+try:
+    if len(OP)==2:
+        OPT=int(OP[1])
+    elif len(OP)>2:
+        print(f"\033[1;36;40mGaRI: \033[0;37;40mI Only Take One Option Please Only Use One")
+        LOOP=False
+except ValueError:
+    print(f'\033[1;36;40mGaRI: \033[0;37;40m"{OP[1]}" Is Not A Number Please Put A Number')
+    LOOP=False
+
+#eternaly reminds you of your sins
+while LOOP==True:
+    RED=open(f"{USE}/reminder.txt", "r")
+    RED2=open(f"{USE}/reminder.txt", "r").read()
+
+#deals with notifications and speach
+    if CON["reminder"]["speak"]=="True":
+        WORD=RED.read().replace(" ", "_")
+        os.system(f"espeak-ng Remember_to_{WORD}.")
+    if CON["reminder"]["notify"]=="True":
+        NOT=notify2.Notification("G.a.R.I", f"Remember To {RED2}", f"{USE}/GaRI_happy.png")
+        NOT.show()
+
+#checks if options should be used or settings
+    if len(OP)==1:
+        time.sleep(SET)
+    elif len(OP)>=2:
+        time.sleep(OPT*60)
