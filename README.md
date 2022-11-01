@@ -24,5 +24,5 @@ I am not currently supporting MacOS. However, it may still run, I haven't tested
 
 Windows
 ```
-Windows has one needed dependancy called "Linux" you must install this to run the program
+Windows has one needed dependancy called "Linux" you must install this regardless if you want to run the program or not
 ```
