@@ -13,7 +13,6 @@ Instalation
 
 Linux
 ```
-Run:
 chmod +x todo
 ./todo
 ```
