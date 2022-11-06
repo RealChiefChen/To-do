@@ -11,7 +11,8 @@ make sure to run "pip install notify2" if notify2 is not installed
 If pip is not installed. Your on your own I ain't holding your hand through that
 
 Instalation
-==================
+
+After downloading the program run these commands to use it
 
 Linux
 ```
