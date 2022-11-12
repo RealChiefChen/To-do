@@ -58,7 +58,7 @@ while LOOP==True:
 #checks if options should be used or settings
     try:
         if len(OP)==1:
-            time.sleep(SET)
+            time.sleep(SET*60)
         elif len(OP)>=2:
             time.sleep(OPT*60)
     except KeyboardInterrupt:
