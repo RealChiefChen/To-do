@@ -33,13 +33,16 @@ Windows has one needed dependancy called "Linux" you must install this regardles
 
 Todo:
 
+```
 you can add a custom input when running from the command line
 the timer only counts in minutes
 
 for example ./todo 60
+```
 
 Gui:
 
+```
 The voice switch enables/disables the voice
 
 The notification switch enables/disables the notification
@@ -53,3 +56,4 @@ To enter a reminder input text in the entry box next to the button that says "En
 To delete a reminder find the line you want to delete in the combonation box then push the button under it
 
 To change GaRI's face just press it
+```
