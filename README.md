@@ -31,16 +31,20 @@ Windows has one needed dependancy called "Linux" you must install this regardles
 
 # Documentation
 
-todo:
+Todo:
+
 you can add a custom input when running from the command line
 the timer only counts in minutes
 
 for example ./todo 60
 
-gui:
-the voice switch enables/disables the voice
-the notification switch enables/disables the notification
-the espeak switch switches modes from espeak to espeak-ng
+Gui:
+
+The voice switch enables/disables the voice
+
+The notification switch enables/disables the notification
+
+The espeak switch switches modes from espeak to espeak-ng
 
 To change the default minutes input the minutes in the minutes box and enter it with the button below
 
