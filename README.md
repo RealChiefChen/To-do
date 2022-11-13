@@ -28,3 +28,20 @@ Windows
 ```
 Windows has one needed dependancy called "Linux" you must install this regardless if you want to run the program or not
 ```
+
+# Documentation
+
+todo:
+you can add a custom input when running from the command line
+the timer only counts in minutes
+
+./todo 60
+
+gui:
+the voice switch enables/disables the voice
+the notification switch enables/disables the notification
+the espeak switch switches modes from espeak to espeak-ng
+
+you can input the default minutes in minutes box and enter it with the button below
+
+TO BE CONTINUED
