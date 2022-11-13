@@ -35,7 +35,7 @@ todo:
 you can add a custom input when running from the command line
 the timer only counts in minutes
 
-./todo 60
+for example ./todo 60
 
 gui:
 the voice switch enables/disables the voice
