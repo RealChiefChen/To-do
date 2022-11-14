@@ -31,6 +31,8 @@ def rchop(s, suffix):
 try:
     if len(OP)==2:
         OPT=int(OP[1])
+        if OPT==0:
+            OPT+=1
     elif len(OP)>2:
         print(f"\033[1;36;40mGaRI: \033[0;37;40mI Only Take One Option Please Only Use One")
         LOOP=False
@@ -56,14 +58,17 @@ while LOOP==True:
         NOT.show()
 
 #checks if options should be used or settings
-    try:
-        if len(OP)==1:
-            time.sleep(SET*60)
-        elif len(OP)>=2:
-            time.sleep(OPT*60)
-    except KeyboardInterrupt:
-        print("", f"\033[1;36;40mGaRI: \033[0;37;40mSee You Later!")
-        exit()
-
-
-#Nice
+        try:
+            if len(OP)==1:
+                time.sleep(SET)
+            elif len(OP)>=2:
+                time.sleep(OPT*60)
+        except KeyboardInterrupt:
+            print("", f"\033[1;36;40mGaRI: \033[0;37;40mSee You Later!")
+            exit()
+        except ValueError:
+            print(f"\033[1;36;40mGaRI: \033[0;37;40mPlease Input A Positive Number")
+            exit()
+        except OverflowError:
+            print(f"\033[1;36;40mGaRI: \033[0;37;40mThat Number Is Too Large.\nRemember The Time Is Counted In Minutes.")
+            exit()
