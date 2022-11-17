@@ -19,7 +19,7 @@ OP=sys.argv
 CON=ConfigParser()
 notify2.init("")
 CON.read(f"/home/{USE}/.config/todo/config.ini")
-SET=int(CON["minutes"])
+SET=int(CON["reminder"]["minutes"])
 
 def rchop(s, suffix):
     if suffix and s.endswith(suffix):
