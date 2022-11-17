@@ -1,12 +1,10 @@
 # To-do:
 
-This is a program will remind you of your work. You can't lie to me, you were putting off.
+With the help of half of stackoverflow I would like to present To-do! This is a program will remind you of your work. You can't lie to me, you were putting off. NOW WITH GUI!!!
 
 PLEASE NOTE! THIS PROGRAM IS NOT DONE AND IS STILL BEING WORKED ON. Feel free to give feedback!
 
-you also might need to install espeak-ng https://github.com/espeak-ng/espeak-ng
-
-make sure to run "pip install notify2" if notify2 is not installed
+make sure to run "./install_dependencies.sh" you will how ever need to install espeak-ng yourself. There is a link in the file 
 
 If pip is not installed. Your on your own I ain't holding your hand through that
 
@@ -17,8 +15,8 @@ After downloading the program run these commands to use it
 
 Linux
 ```
-chmod +x todo
-./todo
+chmod +x todo && ./todo
+chmod +x gui && ./gui
 ```
 
 MacOS
@@ -28,5 +26,35 @@ I am not currently supporting MacOS. However, it may still run, It hasn't been t
 
 Windows
 ```
-Windows has one needed dependancy called "Linux" you must install this regardless if you want to run the program or not
+Windows has a dependancy called "Linux" you must install this regardless if you want to run the program or not
+```
+
+# Documentation
+
+Todo
+
+```
+you can add a custom input when running from the command line
+the timer only counts in minutes
+
+for example ./todo 60
+```
+
+Gui
+
+```
+The voice switch enables/disables the voice
+
+The notification switch enables/disables the notification
+
+The espeak switch switches modes from espeak to espeak-ng
+```
+```
+To change the default minutes input the minutes in the minutes box and enter it with the button below
+
+To enter a reminder input text in the entry box next to the button that says "Enter reminder" then press said button
+
+To delete a reminder find the line you want to delete in the combonation box then push the button under it
+
+To change GaRI's face just press it
 ```

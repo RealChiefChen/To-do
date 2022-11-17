@@ -20,12 +20,19 @@ OP=sys.argv
 CON=ConfigParser()
 notify2.init("")
 CON.read(f"{USE}/config.ini")
-SET=int(CON["freq"]["minutes"])
+SET=int(CON["reminder"]["minutes"])
+
+def rchop(s, suffix):
+    if suffix and s.endswith(suffix):
+        return s[:-len(suffix)]
+    return s
 
 #makes sure that any given options are valid
 try:
     if len(OP)==2:
         OPT=int(OP[1])
+        if OPT==0:
+            OPT+=1
     elif len(OP)>2:
         print(f"\033[1;36;40mGaRI: \033[0;37;40mI Only Take One Option Please Only Use One")
         LOOP=False
@@ -35,19 +42,33 @@ except ValueError:
 
 #eternaly reminds you of your sins
 while LOOP==True:
-    RED=open(f"{USE}/reminder.txt", "r")
-    RED2=open(f"{USE}/reminder.txt", "r").read()
 
-#deals with notifications and speach
-    if CON["reminder"]["speak"]=="True":
-        WORD=RED.read().replace(" ", "_")
-        os.system(f"espeak-ng Remember_to_{WORD}.")
+    RED=open(f"{USE}/reminder.txt", "r").read()
+    WORD="".join(RED.replace("\n", "_and_").replace(" ", "_"))
+    WORD=rchop(f"{WORD}", '_and_')
+
+    if CON["reminder"]["espeak-ng"]=="True":
+        if CON["reminder"]["speak"]=="True":
+            os.system(f"espeak-ng Remember_to_{WORD}")
+    else:
+        if CON["reminder"]["speak"]=="True":
+            os.system(f"espeak Remember_to_{WORD}")
     if CON["reminder"]["notify"]=="True":
-        NOT=notify2.Notification("G.a.R.I", f"Remember To {RED2}", f"{USE}/GaRI_happy.png")
+        NOT=notify2.Notification("G.a.R.I", f"Remember To {RED}", f"{USE}/GaRI_happy.png")
         NOT.show()
 
 #checks if options should be used or settings
-    if len(OP)==1:
-        time.sleep(SET*60)
-    elif len(OP)>=2:
-        time.sleep(OPT*60)
+        try:
+            if len(OP)==1:
+                time.sleep(SET*60)
+            elif len(OP)>=2:
+                time.sleep(OPT*60)
+        except KeyboardInterrupt:
+            print("", f"\033[1;36;40mGaRI: \033[0;37;40mSee You Later!")
+            exit()
+        except ValueError:
+            print(f"\033[1;36;40mGaRI: \033[0;37;40mPlease Input A Positive Number")
+            exit()
+        except OverflowError:
+            print(f"\033[1;36;40mGaRI: \033[0;37;40mThat Number Is Too Large.\nRemember The Time Is Counted In Minutes.")
+            exit()
