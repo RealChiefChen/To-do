@@ -1,3 +1,4 @@
+#!/bin/bash
 chmod +x todo
 chmod +x todo-gui
 pip install notify2
