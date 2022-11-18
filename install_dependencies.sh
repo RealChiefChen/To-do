@@ -15,7 +15,6 @@ sudo mv GaRI_really_sad.png /home/$USER/.config/todo/GaRI_really_sad.png
 sudo mv GaRI_sad.png /home/$USER/.config/todo/GaRI_sad.png
 sudo mv todo_GaRI.png /home/$USER/.config/todo/todo_GaRI.png
 sudo mv config.ini /home/$USER/.config/todo/config.ini
-sudo mv install_dependencies.sh /home/$USER/.config/todo/install_dependencies.sh
 sudo mv LICENSE /home/$USER/.config/todo/LICENSE
 sudo mv README.md /home/$USER/.config/todo/README.md
 sudo mv reminder.txt /home/$USER/.config/todo/reminder.txt
@@ -23,3 +22,4 @@ echo
 echo =====================================================================
 echo PLEASE INSTALL ESPEAK-NG HERE: https://github.com/espeak-ng/espeak-ng
 echo =====================================================================
+sudo mv install_dependencies.sh /home/$USER/.config/todo/install_dependencies.sh
