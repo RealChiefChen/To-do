@@ -2,9 +2,9 @@
 
 With the help of half of stackoverflow I would like to present To-do! This is a program will remind you of your work. You can't lie to me, you were putting off. NOW WITH GUI!!!
 
-PLEASE NOTE! THIS PROGRAM IS NOT DONE AND IS STILL BEING WORKED ON. Feel free to give feedback!
+Feel free to give feedback!
 
-make sure to run "./install_dependencies.sh" you will how ever need to install espeak-ng yourself. There is a link in the file 
+make sure to run "./installer.sh" you will however need to install espeak-ng yourself. There is a link in the file 
 
 If pip is not installed. Your on your own I ain't holding your hand through that
 
@@ -16,7 +16,7 @@ After downloading the program run these commands to use it
 Linux
 ```
 chmod +x todo && ./todo
-chmod +x gui && ./gui
+chmod +x todo-gui && ./todo-gui
 ```
 
 MacOS
