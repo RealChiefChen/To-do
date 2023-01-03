@@ -8,7 +8,7 @@ import os
 import configparser
 from configparser import ConfigParser
 
-customtkinter.set_appearance_mode("System")
+customtkinter.set_appearance_mode("Dark")
 customtkinter.set_default_color_theme("blue")
 
 class App(customtkinter.CTk):
@@ -20,10 +20,10 @@ class App(customtkinter.CTk):
         super().__init__()
 
         global USE
-        USE=os.getcwd()
+        USE=os.getlogin()
         CON=ConfigParser()
-        CON.read(f"{USE}/config.ini")
-        RED3=open(f"{USE}/reminder.txt", "r").read()
+        CON.read(f"/home/{USE}/.config/todo/config.ini")
+        RED3=open(f"/home/{USE}/.config/todo/reminder.txt", "r").read()
 
         self.title("To-do | RealChiefChen")
         self.geometry(f"{App.WIDTH}x{App.HEIGHT}")
@@ -47,14 +47,14 @@ class App(customtkinter.CTk):
         def switch_event1():
             T1=self.switch_1.get()
             config=configparser.ConfigParser()
-            config.read(f"{USE}/config.ini")    
+            config.read(f"/home/{USE}/.config/todo/config.ini")    
             if T1==1:
                 config['reminder']['speak']="True"
-                with open(f"{USE}/config.ini", 'w') as configfile:
+                with open(f"/home/{USE}/.config/todo/config.ini", 'w') as configfile:
                     config.write(configfile)
             if T1==0:
                 config['reminder']['speak']="False"
-                with open(f"{USE}/config.ini", 'w') as configfile:
+                with open(f"/home/{USE}/.config/todo/config.ini", 'w') as configfile:
                     config.write(configfile)
         self.switch_1 = customtkinter.CTkSwitch(master=self.frame_left, text="Voice", command=switch_event1)
         self.switch_1.grid(row=7, column=0, columnspan=1, pady=10, padx=20, sticky="we")
@@ -62,15 +62,15 @@ class App(customtkinter.CTk):
         def switch_event2():
             T2=self.switch_2.get()
             config=configparser.ConfigParser()
-            config.read(f"{USE}/config.ini")    
+            config.read(f"/home/{USE}/.config/todo/config.ini")    
             if T2==1:
                 config['reminder']['notify']="True"
-                with open(f"{USE}/config.ini", 'w') as configfile:
+                with open(f"/home/{USE}/.config/todo/config.ini", 'w') as configfile:
 #Nice
                     config.write(configfile)
             if T2==0:
                 config['reminder']['notify']="False"
-                with open(f"{USE}/config.ini", 'w') as configfile:
+                with open(f"/home/{USE}/.config/todo/config.ini", 'w') as configfile:
                     config.write(configfile)
         self.switch_2=customtkinter.CTkSwitch(master=self.frame_left, text="Notification", command=switch_event2)
         self.switch_2.grid(row=8, column=0, columnspan=1, pady=10, padx=20, sticky="we")
@@ -78,14 +78,14 @@ class App(customtkinter.CTk):
         def switch_event3():
             T5=self.switch_3.get()
             config=configparser.ConfigParser()
-            config.read(f"{USE}/config.ini")
+            config.read(f"/home/{USE}/.config/todo/config.ini")
             if T5==1:
                 config["reminder"]["espeak-ng"]="True"
-                with open(f"{USE}/config.ini", 'w') as configfile:
+                with open(f"/home/{USE}/.config/todo/config.ini", 'w') as configfile:
                     config.write(configfile)
             if T5==0:
                 config["reminder"]["espeak-ng"]="False"
-                with open(f"{USE}/config.ini", 'w') as configfile:
+                with open(f"/home/{USE}/.config/todo/config.ini", 'w') as configfile:
                     config.write(configfile)
         self.switch_3=customtkinter.CTkSwitch(master=self.frame_left, text="Espeak-ng", command=switch_event3)
         self.switch_3.grid(row=6, column=0, columnspan=1, pady=10, padx=20, sticky="we")
@@ -96,9 +96,9 @@ class App(customtkinter.CTk):
         def button_event2():
             T4=self.entry2.get()
             config=configparser.ConfigParser()
-            config.read(f"{USE}/config.ini")
+            config.read(f"/home/{USE}/.config/todo/config.ini")
             config['reminder']['minutes']=T4
-            with open(f"{USE}/config.ini", 'w') as configfile:
+            with open(f"/home/{USE}/.config/todo/config.ini", 'w') as configfile:
                 config.write(configfile)
         self.button6=customtkinter.CTkButton(master=self.frame_left, text="Enter Minutes", command=button_event2)
         self.button6.grid(row=5)
@@ -107,7 +107,7 @@ class App(customtkinter.CTk):
         my_text2.grid(row=0, column=0, pady=10, padx=10, rowspan=8, columnspan=7, sticky="news")
         my_text2.insert(END, RED3)
 
-        NUMLIN=sum(1 for line in open(f"{USE}/reminder.txt"))
+        NUMLIN=sum(1 for line in open(f"/home/{USE}/.config/todo/reminder.txt"))
         LINES=[]
         for i in range(NUMLIN):
             LINES.append(str(NUMLIN))
@@ -123,16 +123,16 @@ class App(customtkinter.CTk):
         self.combox.grid(row=1, column=0, columnspan=1, pady=5, padx=5, sticky="ew")
 
         def button_event2():
-                with open(f"{USE}/reminder.txt", 'r') as fr:
+                with open(f"/home/{USE}/.config/todo/reminder.txt", 'r') as fr:
                     lines=fr.readlines()
                     ptr=1
                     if len(lines)>0 and CHO!=0:
-                        with open(f"{USE}/reminder.txt", 'w') as fw:
+                        with open(f"/home/{USE}/.config/todo/reminder.txt", 'w') as fw:
                             for line in lines:
                                 if ptr!=CHO:
                                     fw.write(line)
                                 ptr+=1
-                RED3=open(f"{USE}/reminder.txt", "r").read()
+                RED3=open(f"/home/{USE}/.config/todo/reminder.txt", "r").read()
                 my_text2.delete('1.0', END)
                 my_text2.insert(END, RED3)
         self.button7=customtkinter.CTkButton(master=self.frame_left, text="Delete Line", command=button_event2)
@@ -147,6 +147,7 @@ class App(customtkinter.CTk):
             global NUM
             if NUM==0:
                 IMG=self.load_image("/GaRI_really_sad.png", 100)
+                self.title("To-do | GaRI")
             if NUM==1:
                 IMG=self.load_image("/GaRI_bruh.png", 100)
             if NUM==2:
@@ -166,23 +167,23 @@ class App(customtkinter.CTk):
         self.entry.grid(row=8, column=0, columnspan=2, pady=20, padx=20, sticky="we",)
 
         def button_event():
-            RED4=open(f"{USE}/reminder.txt", "a")
+            RED4=open(f"/home/{USE}/.config/todo/reminder.txt", "a")
             T3=self.entry.get()
             if T3=="":
                 pass
-            elif os.path.getsize(f"{USE}/reminder.txt")>0:
+            elif os.path.getsize(f"/home/{USE}/.config/todo/reminder.txt")>0:
                 my_text2.insert(END, f"{T3}"+"\n")
             else:
                 my_text2.insert(END, f"{T3}"+"\n")
             self.entry.delete(0, END)
-            if os.path.getsize(f"{USE}/reminder.txt")>0 and not T3=="":
+            if os.path.getsize(f"/home/{USE}/.config/todo/reminder.txt")>0 and not T3=="":
                 RED4.write(f"{T3}"+"\n")
-            elif os.path.getsize(f"{USE}/reminder.txt")>0 and T3=="":
+            elif os.path.getsize(f"/home/{USE}/.config/todo/reminder.txt")>0 and T3=="":
                 pass
             else:
                 RED4.write(f"{T3}"+"\n")
             RED4.close
-            NUMLIN2=sum(1 for line in open(f"{USE}/reminder.txt"))
+            NUMLIN2=sum(1 for line in open(f"/home/{USE}/.config/todo/reminder.txt"))
             LINES.append(str(NUMLIN2+1))
             self.combox.configure(values=LINES, command=combox_event, variable=OP1)
         self.button_5=customtkinter.CTkButton(master=self.frame_right, text="<-- Enter Reminder", command=button_event)
@@ -198,7 +199,7 @@ class App(customtkinter.CTk):
     def on_closing(self, event=0):
         self.destroy()
     def load_image(self, path, image_size):
-        return ImageTk.PhotoImage(Image.open(f"{USE}" + path).resize((image_size, image_size)))
+        return ImageTk.PhotoImage(Image.open(f"/home/{USE}/.config/todo" + path).resize((image_size, image_size)))
 
 if __name__ == "__main__":
     app = App()

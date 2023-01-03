@@ -14,12 +14,11 @@ import time
 from configparser import ConfigParser
 
 #just makes variables for later
-LOOP=True
-USE=os.getcwd()
+USE=os.getlogin()
 OP=sys.argv
 CON=ConfigParser()
 notify2.init("")
-CON.read(f"{USE}/config.ini")
+CON.read(f"/home/{USE}/.config/todo/config.ini")
 SET=int(CON["reminder"]["minutes"])
 
 def rchop(s, suffix):
@@ -35,15 +34,15 @@ try:
             OPT+=1
     elif len(OP)>2:
         print(f"\033[1;36;40mGaRI: \033[0;37;40mI Only Take One Option Please Only Use One")
-        LOOP=False
+        exit()
 except ValueError:
     print(f'\033[1;36;40mGaRI: \033[0;37;40m"{OP[1]}" Is Not A Number Please Put A Number')
-    LOOP=False
+    exit()
 
 #eternaly reminds you of your sins
-while LOOP==True:
+while True:
 
-    RED=open(f"{USE}/reminder.txt", "r").read()
+    RED=open(f"/home/{USE}/.config/todo/reminder.txt", "r").read()
     WORD="".join(RED.replace("\n", "_and_").replace(" ", "_"))
     WORD=rchop(f"{WORD}", '_and_')
 
@@ -54,12 +53,14 @@ while LOOP==True:
         if CON["reminder"]["speak"]=="True":
             os.system(f"espeak Remember_to_{WORD}")
     if CON["reminder"]["notify"]=="True":
-        NOT=notify2.Notification("G.a.R.I", f"Remember To {RED}", f"{USE}/GaRI_happy.png")
+        NOT=notify2.Notification("G.a.R.I", f"Remember To {RED}", f"/home/{USE}/.config/todo/GaRI_happy.png")
         NOT.show()
 
 #checks if options should be used or settings
         try:
             if len(OP)==1:
+                if SET==0:
+                    SET+=1
                 time.sleep(SET*60)
             elif len(OP)>=2:
                 time.sleep(OPT*60)
