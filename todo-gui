@@ -8,7 +8,7 @@ import os
 import configparser
 from configparser import ConfigParser
 
-customtkinter.set_appearance_mode("System")
+customtkinter.set_appearance_mode("Dark")
 customtkinter.set_default_color_theme("blue")
 
 class App(customtkinter.CTk):
@@ -147,6 +147,7 @@ class App(customtkinter.CTk):
             global NUM
             if NUM==0:
                 IMG=self.load_image("/GaRI_really_sad.png", 100)
+                self.title("To-do | GaRI")
             if NUM==1:
                 IMG=self.load_image("/GaRI_bruh.png", 100)
             if NUM==2:

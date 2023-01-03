@@ -59,6 +59,8 @@ while True:
 #checks if options should be used or settings
         try:
             if len(OP)==1:
+                if SET==0:
+                    SET+=1
                 time.sleep(SET*60)
             elif len(OP)>=2:
                 time.sleep(OPT*60)
